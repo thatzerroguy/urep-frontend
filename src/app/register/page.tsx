@@ -12,9 +12,9 @@ export default function RegisterPage() {
 
     const router = useRouter();
     // Function to handle opening the terms modal
-    const navigateToProgramInfo = () => {
-        router.push(`/programs/${programme}`);
-    }
+    // const navigateToProgramInfo = () => {
+    //     router.push(`/programs/${programme}`);
+    // }
 
     // const openTermsModal = (e: React.MouseEvent<HTMLAnchorElement>) => {
     //     e.preventDefault();
@@ -477,7 +477,7 @@ export default function RegisterPage() {
                     <h2 className={'font-semibold text-xl mb-4'}>PERSONAL INFORMATION</h2>
                     <form onSubmit={handleSubmit} className={'my-5 w-[70%]'}>
                         {/* Programme field - static display */}
-                          <h2 className="text-xl font-bold mt-8 mb-4 text-[#277B12]">Section A: Personal Information</h2>
+                          <h2 className="text-xl font-bold mt-8 mb-4 text-[#277B12]">Section A1: Personal Information</h2>
                         <div className="mb-4">
                             <label htmlFor="programme" className="block mb-2 text-sm mt-3 font-medium text-black">
                                 Selected Programme
@@ -642,7 +642,7 @@ export default function RegisterPage() {
                             id="gender"
                             readOnly={true}
                         />
-                          <h2 className="text-xl font-bold mt-8 mb-4 text-[#277B12]">Section B: Contact Information</h2>
+                          <h2 className="text-xl font-bold mt-8 mb-4 text-[#277B12]">Section A2: Contact Information</h2>
                         {/* Email field */}
                         <TextField
                             type="email"
@@ -699,7 +699,7 @@ export default function RegisterPage() {
                         />
 
                         {/* Section C: Demographics */}
-                        <h2 className="text-xl font-bold mt-8 mb-4 text-[#277B12]">Section C: Demographics</h2>
+                        <h2 className="text-xl font-bold mt-8 mb-4 text-[#277B12]">Section B: Demographics</h2>
 
                         {/* State of Origin */}
                         <TextField
@@ -776,7 +776,7 @@ export default function RegisterPage() {
                         />
 
                         {/* Section D: Education & Skills */}
-                        <h2 className="text-xl font-bold mt-8 mb-4 text-[#277B12]">Section D: Education & Skills</h2>
+                        <h2 className="text-xl font-bold mt-8 mb-4 text-[#277B12]">Section C: Education & Skills</h2>
 
                         {/* Highest Level of Education */}
                         <TextField
