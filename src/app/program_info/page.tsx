@@ -41,7 +41,7 @@ export default function ProgramInfo() {
         if (!program) return '';
         const selectedProgram = programOptions.find(option => option.value === program);
         return selectedProgram ? selectedProgram.label : '';
-    }, [program]);
+    }, [program, programOptions]);
 
 
     const organisationOptions = [

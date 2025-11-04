@@ -1,4 +1,5 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useState} from 'react';
+import { Eye, EyeOff } from 'lucide-react';
 
 interface TextFieldProps {
   type: 'text' | 'email' | 'password' | 'dropdown';
@@ -12,6 +13,8 @@ interface TextFieldProps {
   error?: string;
   id?: string;
   name?: string;
+  disabled?: boolean;
+  readOnly?: boolean;
 }
 
 const TextField: React.FC<TextFieldProps> = ({
@@ -26,9 +29,17 @@ const TextField: React.FC<TextFieldProps> = ({
   error,
   id,
   name,
+  disabled = false,
+  readOnly = false,
 }) => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     onChange(e.target.value);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   const renderInput = () => {
@@ -42,8 +53,9 @@ const TextField: React.FC<TextFieldProps> = ({
             onChange={handleChange}
             className={`w-full px-4 py-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#277B12] ${
               error ? 'border-red-500' : 'border-gray-300'
-            } ${className}`}
+            } ${disabled || readOnly ? 'bg-gray-100 cursor-not-allowed' : ''} ${className}`}
             required={required}
+            disabled={disabled || readOnly}
           >
             <option value="" disabled>
               {placeholder || 'Select an option'}
@@ -57,18 +69,30 @@ const TextField: React.FC<TextFieldProps> = ({
         );
       case 'password':
         return (
-          <input
-            type="password"
-            id={id}
-            name={name}
-            value={value}
-            onChange={handleChange}
-            placeholder={placeholder}
-            className={`w-full px-4 py-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#277B12] ${
-              error ? 'border-red-500' : 'border-gray-300'
-            } ${className}`}
-            required={required}
-          />
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              id={id}
+              name={name}
+              value={value}
+              onChange={handleChange}
+              placeholder={placeholder}
+              className={`w-full px-4 py-4 pr-12 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#277B12] ${
+                error ? 'border-red-500' : 'border-gray-300'
+              } ${disabled || readOnly ? 'bg-gray-100 cursor-not-allowed' : ''} ${className}`}
+              required={required}
+              disabled={disabled}
+              readOnly={readOnly}
+            />
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+              tabIndex={-1}
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
         );
       case 'email':
         return (
@@ -81,8 +105,10 @@ const TextField: React.FC<TextFieldProps> = ({
             placeholder={placeholder}
             className={`w-full px-4 py-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#277B12] ${
               error ? 'border-red-500' : 'border-gray-300'
-            } ${className}`}
+            } ${disabled || readOnly ? 'bg-gray-100 cursor-not-allowed' : ''} ${className}`}
             required={required}
+            disabled={disabled}
+            readOnly={readOnly}
           />
         );
       case 'text':
@@ -97,8 +123,10 @@ const TextField: React.FC<TextFieldProps> = ({
             placeholder={placeholder}
             className={`w-full px-4 py-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#277B12] ${
               error ? 'border-red-500' : 'border-gray-300'
-            } ${className}`}
+            } ${disabled || readOnly ? 'bg-gray-100 cursor-not-allowed' : ''} ${className}`}
             required={required}
+            disabled={disabled}
+            readOnly={readOnly}
           />
         );
     }

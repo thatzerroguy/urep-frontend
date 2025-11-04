@@ -95,7 +95,7 @@ export default function Home() {
       mainImage: '/images/speaker.png',
       thumbnailImage: '/images/speaker.png',
       registerLink: '/register?program=african_youth',
-      date: '20/11/2025',
+      date: '01/11/2025',
     }
   ];
 
@@ -129,7 +129,7 @@ export default function Home() {
     }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(interval); // Clean up on unmount
-  }, []);
+  }, [nextProgram]);
 
   return (
       <div className={'w-screen'}>
