@@ -699,7 +699,7 @@ export default function RegisterPage() {
                         />
 
                         {/* Section C: Demographics */}
-                        <h2 className="text-xl font-bold mt-8 mb-4 text-[#277B12]">Section B: Demographics</h2>
+                        <h2 className="text-xl font-bold mt-8 mb-4 text-[#277B12]">Section A3: Demographics</h2>
 
                         {/* State of Origin */}
                         <TextField
@@ -776,7 +776,7 @@ export default function RegisterPage() {
                         />
 
                         {/* Section D: Education & Skills */}
-                        <h2 className="text-xl font-bold mt-8 mb-4 text-[#277B12]">Section C: Education & Skills</h2>
+                        <h2 className="text-xl font-bold mt-8 mb-4 text-[#277B12]">Section A4: Education & Skills</h2>
 
                         {/* Highest Level of Education */}
                         <TextField
