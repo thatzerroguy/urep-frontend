@@ -50,7 +50,7 @@ export default function RegisterPage() {
     // const [agreeProgramTerms, setAgreeProgramTerms] = useState(false);
     // const [showTermsModal, setShowTermsModal] = useState(false);
     const [organisation, setOrganisation] = useState('');
-    const [receiveOTP, setReceiveOTP] = useState('');
+    // const [receiveOTP, setReceiveOTP] = useState('');
     const [otp, setOtp] = useState('');
     const [isNINVerified, setIsNINVerified] = useState(false);
     const [otpSent, setOtpSent] = useState(false);
@@ -198,10 +198,10 @@ export default function RegisterPage() {
             return;
         }
 
-        if (!receiveOTP) {
-            setOtpError('Please select how you want to receive OTP');
-            return;
-        }
+        // if (!receiveOTP) {
+        //     setOtpError('Please select how you want to receive OTP');
+        //     return;
+        // }
 
         // Generate a random 6-digit OTP
         const otp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -298,9 +298,9 @@ export default function RegisterPage() {
         }
     };
 
-      const otpOptions= [
-        { value: 'sms', label: 'SMS' },
-    ]
+    //   const otpOptions= [
+    //     { value: 'sms', label: 'SMS' },
+    // ]
 
     const organisationOptions= [
         { value: 'NGO', label: 'NGO' },
@@ -538,18 +538,14 @@ export default function RegisterPage() {
                             )}
                         </div>
 
-                        {/* OTP Receive Option field */}
-                        <TextField
-                            type="dropdown"
-                            label="How do you want to receive the OTP?"
-                            placeholder="Select your preferred method"
-                            value={receiveOTP}
-                            onChange={setReceiveOTP}
-                            options={otpOptions}
-                            required
-                            id="receiveOTP"
-                            disabled={isNINVerified}
-                        />
+                        {/* OTP Receive Option field - only shows when NIN is not verified */}
+                        {!isNINVerified && (
+                            <div className="mb-4">
+                                <div className="w-full px-4 py-4 border border-gray-300 rounded-lg bg-gray-100">
+                                    You will receive an OTP via SMS to your NIN registered mobile number.
+                                </div>
+                            </div>
+                        )}
 
                         {/* Send OTP Button */}
                         {!otpSent && !isNINVerified && (
