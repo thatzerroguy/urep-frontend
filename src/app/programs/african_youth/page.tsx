@@ -367,7 +367,7 @@ export default function AfricanYouthPage() {
                     {/* Question 7: Previous Participation */}
                     <TextField
                         type="dropdown"
-                        label="7. Have you participated in a similar policy validation programme? *"
+                        label="7. Have you participated in a similar conference? *"
                         placeholder="Select an option"
                         value={previousParticipation}
                         onChange={setPreviousParticipation}
