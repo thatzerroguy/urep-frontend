@@ -297,7 +297,7 @@ export default function Home() {
 
               {/* Thumbnail Navigation */}
               <div className={'w-full lg:w-[20%] flex flex-col'}>
-                <div className={'flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto'}>
+                <div className={'flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto lg:max-h-[518px] scrollbar-thin scrollbar-thumb-[#277B12] scrollbar-track-gray-200'}>
                   {programsData.map((program, index) => (
                     <div 
                       key={program.id}
