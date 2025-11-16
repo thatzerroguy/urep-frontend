@@ -130,6 +130,7 @@ export default function RegisterPage() {
     const programmeOptions= [
         { value: 'african_youth', label: 'African/National Youth Day 2025' },
         { value: 'bakeprenuer', label: 'Bakeprenuer Nigeria' },
+        { value: 'entrepreneurship', label: 'Entrepreneurship Programme for Unemployed Youths Of South-West Geopolitical Zone' },
         { value: 'national_youth', label: 'National Youth Policy Validation Workshop' },
         { value: 'youth_migration', label: 'Youth Migration Awareness and Management Programme (YMAMP)' },
     ];
