@@ -46,7 +46,7 @@ export default function EntrepreneurshipTermsPage() {
                     <div className={'bg-white p-6 rounded-lg shadow-md'}>
                         <h3 className={'font-bold text-xl text-[#277B12] mb-3'}>Background</h3>
                         <p className={'text-gray-700 leading-7 mb-2'}>
-                            Entrepreneurship Programme for Unemployed Youths Of South-West Geopolitical Zone is a youth development initiative focused on building the capacity of youths from the south-west geopolitical zone with entrepreneurship, IT and human skills, in product sales and marketing It is inline with the Renewed Hope Agenda of President Bola Ahmed Tinubu\'s administration and Presidential Initiative on Youth Enterprise Clusters (PIYEC).,
+                            Entrepreneurship Programme for Unemployed Youths Of South-West Geopolitical Zone is a youth development initiative focused on building the capacity of youths from the south-west geopolitical zone with entrepreneurship, IT and human skills, in product sales and marketing It is inline with the Renewed Hope Agenda of President Bola Ahmed Tinubu's administration and Presidential Initiative on Youth Enterprise Clusters (PIYEC).,
                         </p>
                         <Link href="/programs/entrepreneurship" className={'text-[#277B12] font-medium inline-block hover:underline mb-6'}>
                             Learn More
