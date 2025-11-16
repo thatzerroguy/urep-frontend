@@ -11,6 +11,30 @@ export default function Home() {
   // Program data for the carousel
   const programsData = [
     {
+      id: 'entrepreneurship',
+      title: 'Entrepreneurship Programme for Unemployed Youths Of South-West Geopolitical Zone',
+      background: 'Entrepreneurship Programme for Unemployed Youths Of South-West Geopolitical Zone is a youth development\n' +
+          '                        initiative focused on building the capacity of youths.\n' +
+          '                        from the south-west geopolitical zone with entrepreneurship, IT and human skills,\n' +
+          '                        in product sales and marketing,\n' +
+          '                        It is inline with the Renewed Hope Agenda of President Bola\n' +
+          'Ahmed Tinubu\'s administration and Presidential Initiative on Youth Enterprise\n' +
+          'Clusters (PIYEC).,',
+      objectives: [
+        'To build the capacity of youths from the south-west geopolitical zone with entrepreneurship, IT and human skills, in product sales and marketing.',
+        'To promote entrepreneurship and self-reliance through practical, hands-on learning.'
+      ],
+      targetAudience: [
+        'Youths (15–29 years) as defined by the Nigerian Youth Policy 2019.',
+        'Young entrepreneurs or graduates seeking skills to start a business ',
+        'Youths who have never participated in a similar programme before',
+      ],
+      mainImage: '/images/cooking_chefs.png',
+      thumbnailImage: '/images/chef_small.png',
+      registerLink: '/register?program=bakeprenuer',
+      date: '20/11/2025 - 28/11/2025',
+    },
+    {
       id: 'bakeprenuer',
       title: 'Bakeprenuer Nigeria',
       background: 'Bakeprenuer Nigeria is a youth empowerment and skills development\n' +
