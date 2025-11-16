@@ -48,18 +48,12 @@ export default function EntrepreneurshipTermsPage() {
                         <p className={'text-gray-700 leading-7 mb-2'}>
                             Entrepreneurship Programme for Unemployed Youths Of South-West Geopolitical Zone is a youth development initiative focused on building the capacity of youths from the south-west geopolitical zone with entrepreneurship, IT and human skills, in product sales and marketing It is inline with the Renewed Hope Agenda of President Bola Ahmed Tinubu administration and Presidential Initiative on Youth Enterprise Clusters (PIYEC).,
                         </p>
-                        <Link href="/programs/entrepreneurship" className={'text-[#277B12] font-medium inline-block hover:underline mb-6'}>
-                            Learn More
-                        </Link>
 
                         <h3 className={'font-bold text-xl text-[#277B12] mb-3 mt-6'}>Objectives</h3>
                         <ul className={'list-disc pl-6 space-y-2 text-gray-700 leading-7 mb-2'}>
                             <li>To build the capacity of youths from the south-west geopolitical zone with entrepreneurship, IT and human skills, in product sales and marketing.</li>
                             <li>To promote entrepreneurship and self-reliance through practical, hands-on learning.</li>
                         </ul>
-                        <Link href="/programs/entrepreneurship" className={'text-[#277B12] font-medium inline-block hover:underline mb-6'}>
-                            Learn More
-                        </Link>
 
                         <h3 className={'font-bold text-xl text-[#277B12] mb-3 mt-6'}>Who Should Attend</h3>
                         <ul className={'list-disc pl-6 space-y-2 text-gray-700 leading-7 mb-2'}>
@@ -67,9 +61,6 @@ export default function EntrepreneurshipTermsPage() {
                             <li>Young entrepreneurs or graduates seeking skills to start a business</li>
                             <li>Unemployed youths seeking self-reliance through vocational training</li>
                         </ul>
-                        <Link href="/programs/entrepreneurship" className={'text-[#277B12] font-medium inline-block hover:underline'}>
-                            Learn More
-                        </Link>
                     </div>
 
                     {/* Agreement Checkbox */}

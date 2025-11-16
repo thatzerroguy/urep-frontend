@@ -2,8 +2,8 @@
 import FooterBar from "@/components/FooterBar";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, {useState} from "react";
+import {useRouter} from "next/navigation";
 
 export default function YouthMigrationTermsPage() {
     const router = useRouter();
@@ -50,18 +50,14 @@ export default function YouthMigrationTermsPage() {
                             challenges by educating young people on safe migration pathways, risks of irregular migration, 
                             and opportunities for empowerment within Nigeria.
                         </p>
-                        <Link href="/programs/youth_migration" className={'text-[#277B12] font-medium inline-block hover:underline mb-6'}>
-                            Learn More
-                        </Link>
+
 
                         <h3 className={'font-bold text-xl text-[#277B12] mb-3 mt-6'}>Objectives</h3>
                         <ul className={'list-disc pl-6 space-y-2 text-gray-700 leading-7 mb-2'}>
                             <li>To educate Nigerian youth on safe migration pathways and the risks of irregular migration.</li>
                             <li>To provide information on opportunities for empowerment within Nigeria.</li>
                         </ul>
-                        <Link href="/programs/youth_migration" className={'text-[#277B12] font-medium inline-block hover:underline mb-6'}>
-                            Learn More
-                        </Link>
+
 
                         <h3 className={'font-bold text-xl text-[#277B12] mb-3 mt-6'}>Who Should Attend</h3>
                         <ul className={'list-disc pl-6 space-y-2 text-gray-700 leading-7 mb-2'}>
@@ -69,9 +65,6 @@ export default function YouthMigrationTermsPage() {
                             <li>Migration stakeholders (IOM, NAPTIP, NDLEA, Immigration Services, Embassies).</li>
                             <li>CSOs and NGOs working on migration and human trafficking</li>
                         </ul>
-                        <Link href="/programs/youth_migration" className={'text-[#277B12] font-medium inline-block hover:underline'}>
-                            Learn More
-                        </Link>
                     </div>
 
                     {/* Agreement Checkbox */}

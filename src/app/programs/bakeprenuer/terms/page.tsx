@@ -2,8 +2,8 @@
 import FooterBar from "@/components/FooterBar";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, {useState} from "react";
+import {useRouter} from "next/navigation";
 
 export default function BakeprenuerTermsPage() {
     const router = useRouter();
@@ -50,18 +50,12 @@ export default function BakeprenuerTermsPage() {
                             the baking and food industry. It seeks to equip young Nigerians with practical skills 
                             to enable them to start small-scale businesses, create job opportunities.
                         </p>
-                        <Link href="/programs/bakeprenuer" className={'text-[#277B12] font-medium inline-block hover:underline mb-6'}>
-                            Learn More
-                        </Link>
 
                         <h3 className={'font-bold text-xl text-[#277B12] mb-3 mt-6'}>Objectives</h3>
                         <ul className={'list-disc pl-6 space-y-2 text-gray-700 leading-7 mb-2'}>
                             <li>To provide Nigerian youths with modern baking and confectionery skills aligned with industry standards.</li>
                             <li>To promote entrepreneurship and self-reliance through practical, hands-on learning.</li>
                         </ul>
-                        <Link href="/programs/bakeprenuer" className={'text-[#277B12] font-medium inline-block hover:underline mb-6'}>
-                            Learn More
-                        </Link>
 
                         <h3 className={'font-bold text-xl text-[#277B12] mb-3 mt-6'}>Who Should Attend</h3>
                         <ul className={'list-disc pl-6 space-y-2 text-gray-700 leading-7 mb-2'}>
@@ -69,9 +63,6 @@ export default function BakeprenuerTermsPage() {
                             <li>Young entrepreneurs or graduates seeking skills to start a business</li>
                             <li>Unemployed youths seeking self-reliance through vocational training</li>
                         </ul>
-                        <Link href="/programs/bakeprenuer" className={'text-[#277B12] font-medium inline-block hover:underline'}>
-                            Learn More
-                        </Link>
                     </div>
 
                     {/* Agreement Checkbox */}

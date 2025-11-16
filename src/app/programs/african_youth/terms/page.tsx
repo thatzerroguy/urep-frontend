@@ -2,8 +2,8 @@
 import FooterBar from "@/components/FooterBar";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, {useState} from "react";
+import {useRouter} from "next/navigation";
 
 export default function AfricanYouthTermsPage() {
     const router = useRouter();
@@ -51,18 +51,12 @@ export default function AfricanYouthTermsPage() {
                             showcases achievements, and provides a platform for engagement between youth, government, 
                             and stakeholders.
                         </p>
-                        <Link href="/programs/african_youth" className={'text-[#277B12] font-medium inline-block hover:underline mb-6'}>
-                            Learn More
-                        </Link>
 
                         <h3 className={'font-bold text-xl text-[#277B12] mb-3 mt-6'}>Objectives</h3>
                         <ul className={'list-disc pl-6 space-y-2 text-gray-700 leading-7 mb-2'}>
                             <li>To foster collaboration among young Africans.</li>
                             <li>To develop innovative solutions to African challenges.</li>
                         </ul>
-                        <Link href="/programs/african_youth" className={'text-[#277B12] font-medium inline-block hover:underline mb-6'}>
-                            Learn More
-                        </Link>
 
                         <h3 className={'font-bold text-xl text-[#277B12] mb-3 mt-6'}>Who Should Attend</h3>
                         <ul className={'list-disc pl-6 space-y-2 text-gray-700 leading-7 mb-2'}>
@@ -72,9 +66,6 @@ export default function AfricanYouthTermsPage() {
                             <li>Development partners, CSOs, and private sector actors.</li>
                             <li>Government officials and policymakers.</li>
                         </ul>
-                        <Link href="/programs/african_youth" className={'text-[#277B12] font-medium inline-block hover:underline'}>
-                            Learn More
-                        </Link>
                     </div>
 
                     {/* Agreement Checkbox */}

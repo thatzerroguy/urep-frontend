@@ -2,8 +2,8 @@
 import FooterBar from "@/components/FooterBar";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, {useState} from "react";
+import {useRouter} from "next/navigation";
 
 export default function NationalYouthTermsPage() {
     const router = useRouter();
@@ -50,18 +50,13 @@ export default function NationalYouthTermsPage() {
                             and validate the revised National Youth Policy. It ensures inclusivity, stakeholder input, and 
                             alignment of the policy with current realities facing Nigerian youths.
                         </p>
-                        <Link href="/programs/national_youth" className={'text-[#277B12] font-medium inline-block hover:underline mb-6'}>
-                            Learn More
-                        </Link>
+
 
                         <h3 className={'font-bold text-xl text-[#277B12] mb-3 mt-6'}>Objectives</h3>
                         <ul className={'list-disc pl-6 space-y-2 text-gray-700 leading-7 mb-2'}>
                             <li>To provide a platform for youth to voice their concerns and ideas.</li>
                             <li>To develop actionable solutions to challenges facing Nigerian youth.</li>
                         </ul>
-                        <Link href="/programs/national_youth" className={'text-[#277B12] font-medium inline-block hover:underline mb-6'}>
-                            Learn More
-                        </Link>
 
                         <h3 className={'font-bold text-xl text-[#277B12] mb-3 mt-6'}>Who Should Attend</h3>
                         <ul className={'list-disc pl-6 space-y-2 text-gray-700 leading-7 mb-2'}>
@@ -71,9 +66,6 @@ export default function NationalYouthTermsPage() {
                             <li>Development partners and donor agencies</li>
                             <li>Private sector organisations with youth-related initiatives</li>
                         </ul>
-                        <Link href="/programs/national_youth" className={'text-[#277B12] font-medium inline-block hover:underline'}>
-                            Learn More
-                        </Link>
                     </div>
 
                     {/* Agreement Checkbox */}
