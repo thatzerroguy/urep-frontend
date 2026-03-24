@@ -214,7 +214,7 @@ export default function Home() {
               <Image src={'/images/chef_small.png'} alt={'bakeprenuer'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'}/>
               <Image src={'/images/corpers.png'} alt={'national_youth'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
               <Image src={'/images/students.png'} alt={'youth_migration'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
-              <Image src={'/images/speaker.png'} alt={'african_youth'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
+              <Image src={'/images/newer_pic.png'} alt={'african_youth'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
             </div>
           </div>
 
