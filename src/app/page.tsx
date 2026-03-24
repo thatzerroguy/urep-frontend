@@ -187,7 +187,7 @@ export default function Home() {
                 <h4 className={"text-black text-base sm:text-lg md:text-sm˝ text-center italic"}>ONE STOP SHOP FOR YOUTH ACTIVITIES</h4>
               </div>
 
-              <Image src={'/images/new_logo.png'} alt={'man'} width={300} height={300} className="hidden md:block" />
+              <Image src={'/images/new_logo.png'} alt={'man'} width={300} height={400} className="hidden md:block scale-x-[-1]" />
             </div>
           </div>
 
