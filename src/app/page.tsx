@@ -193,12 +193,12 @@ export default function Home() {
           {/* Databank Registration Banner */}
           <div className="w-full bg-[#277B12] bg-opacity-10 py-10 my-4 flex justify-center">
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 max-w-5xl px-4 text-center md:text-left">
-              <div className="bg-white p-3 rounded-full shadow-md">
+              <div className="bg-white p-3 shadow-md">
                 <Image src="/images/fmyd_logo.png" alt="FMYD Logo" width={80} height={80} />
               </div>
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-[#277B12] mb-2">Register to be a recognised youth in Nigeria</h2>
-                <p className="text-gray-700 mb-4 max-w-2xl text-sm md:text-base">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Register to be a recognised youth in Nigeria</h2>
+                <p className="text-white mb-4 max-w-2xl text-sm md:text-base">
                   Join the National Youth Databank to access exclusive opportunities, training, financial support, and mentorship tailored for your growth and development.
                 </p>
                 <Link href="/databank" className="bg-[#277B12] text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors inline-block shadow-md">

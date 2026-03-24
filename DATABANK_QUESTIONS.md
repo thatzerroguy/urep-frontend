@@ -458,8 +458,3 @@ I consent to the use of my data for development and analysis purposes.
 
 OK
 
-⸻
-
-If you want, I can next:
-	•	Convert this into JSON (for your system/forms builder)
-	•	Or structure it into a dynamic schema for your NestJS/React form generator (which fits perfectly with your current project)
