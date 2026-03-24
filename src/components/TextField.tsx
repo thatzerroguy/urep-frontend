@@ -2,7 +2,7 @@ import React, {ChangeEvent, useState} from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 
 interface TextFieldProps {
-  type: 'text' | 'email' | 'password' | 'dropdown';
+  type: 'text' | 'email' | 'password' | 'dropdown' | 'date';
   label?: string;
   placeholder?: string;
   value: string;
@@ -93,6 +93,23 @@ const TextField: React.FC<TextFieldProps> = ({
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
           </div>
+        );
+      case 'date':
+        return (
+          <input
+            type="date"
+            id={id}
+            name={name}
+            value={value}
+            onChange={handleChange}
+            placeholder={placeholder}
+            className={`w-full px-4 py-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#277B12] ${
+              error ? 'border-red-500' : 'border-gray-300'
+            } ${disabled || readOnly ? 'bg-gray-100 cursor-not-allowed' : ''} ${className}`}
+            required={required}
+            disabled={disabled}
+            readOnly={readOnly}
+          />
         );
       case 'email':
         return (
