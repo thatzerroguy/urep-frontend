@@ -177,7 +177,7 @@ export default function Home() {
           {/* FMYD Intro Section */}
           <div className={'flex flex-col items-center w-full'}>
             <div className={'flex flex-col md:flex-row justify-center items-center gap-6 md:gap-x-8 lg:gap-x-16'}>
-              <Image src={'/images/new_logo.png'} alt={'man'} width={300} height={300} className="hidden md:block" />
+              <Image src={'/images/man1.png'} alt={'man'} width={300} height={300} className="hidden md:block" />
 
               <div className={'flex flex-col items-center gap-y-2 text-center px-4'}>
                 <h1 className={'text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#277B12]'}>FMYD</h1>
@@ -187,7 +187,7 @@ export default function Home() {
                 <h4 className={"text-black text-base sm:text-lg md:text-xl text-center"}>ONE STOP SHOP FOR YOUTH ACTIVITIES</h4>
               </div>
 
-              <Image src={'/images/man2.png'} alt={'man'} width={300} height={300} className="hidden md:block" />
+              <Image src={'/images/new_logo.png'} alt={'man'} width={300} height={300} className="hidden md:block" />
             </div>
           </div>
 
