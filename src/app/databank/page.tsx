@@ -39,6 +39,8 @@ export default function DatabankPage() {
     lgaOfResidence: "",
     phoneNumber: "",
     email: "",
+    bvn: "",
+    nin: "",
 
     // Step 2: Education, Skills & Training
     educationStatus: "",
@@ -80,6 +82,8 @@ export default function DatabankPage() {
     politicalGroupMember: "",
     politicalGroupName: "",
     hasSocialMedia: "",
+    hasInternet: "",
+    hasSmartphone: "",
     socialMediaPlatforms: [] as string[],
     socialMediaPrimaryUse: "",
     socialMediaTraining: "",
@@ -281,6 +285,12 @@ export default function DatabankPage() {
 
                 <div className="mt-8 border-t pt-6">
                   <h3 className="text-lg font-semibold mb-4 text-[#277B12]">Identity and Biometrics (Optional)</h3>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 mb-6">
+                     <TextField type="text" label="Bank Verification Number (BVN)" placeholder="Enter 11-digit BVN" value={formData.bvn} onChange={(v) => updateField('bvn', v)} />
+                     <TextField type="text" label="National Identity Number (NIN)" placeholder="Enter 11-digit NIN" value={formData.nin} onChange={(v) => updateField('nin', v)} />
+                  </div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center hover:bg-gray-50 cursor-pointer">
                       <UploadCloud className="text-gray-400 mb-2" size={32} />
@@ -424,12 +434,15 @@ export default function DatabankPage() {
                   <TextField type="dropdown" label="Are you a registered voter?" options={yesNoOpts} value={formData.registeredVoter} onChange={(v) => updateField('registeredVoter', v)} />
                   <TextField type="dropdown" label="Do you belong to any political group?" options={yesNoOpts} value={formData.politicalGroupMember} onChange={(v) => updateField('politicalGroupMember', v)} />
                   {formData.politicalGroupMember === "Yes" && (
-                    <TextField type="text" label="Political group name" value={formData.politicalGroupName} onChange={(v) => updateField('politicalGroupName', v)} />
+                    <TextField type="text" label="Political group name (Others? Specify)" value={formData.politicalGroupName} onChange={(v) => updateField('politicalGroupName', v)} />
                   )}
                 </div>
 
                 <h3 className="text-lg font-semibold mt-8 mb-4 border-t pt-6">Digital Presence</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
+                  <TextField type="dropdown" label="Do you have access to the internet?" options={yesNoOpts} value={formData.hasInternet} onChange={(v) => updateField('hasInternet', v)} />
+                  <TextField type="dropdown" label="Do you own a smartphone?" options={yesNoOpts} value={formData.hasSmartphone} onChange={(v) => updateField('hasSmartphone', v)} />
+
                   <TextField type="dropdown" label="Do you have a social media account?" options={yesNoOpts} value={formData.hasSocialMedia} onChange={(v) => updateField('hasSocialMedia', v)} />
                   
                   {formData.hasSocialMedia === "Yes" && (
