@@ -183,8 +183,8 @@ export default function Home() {
                 <h1 className={'text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#277B12]'}>FMYD</h1>
                 <h2 className={'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-black'}>UNIFIED REGISTRATION PORTAL</h2>
                 <h2 className={'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-black'}>(UREP)</h2>
-              <h4 className={'text-black text-base sm:text-lg md:text-xl text-center'}>REALTIME YOUTH POLICY MONITORING AND EMPOWERMENT PROGRAMS</h4>
-              <h4 className={"text-black text-base sm:text-lg md:text-xl text-center"}>ONE STOP SHOP FOR YOUTH ACTIVITIES</h4>
+                <h4 className={'text-black text-base sm:text-lg md:text-xl text-center'}>REALTIME YOUTH POLICY MONITORING AND EMPOWERMENT PROGRAMS</h4>
+                <h4 className={"text-black text-base sm:text-lg md:text-xl text-center"}>ONE STOP SHOP FOR YOUTH ACTIVITIES</h4>
               </div>
 
               <Image src={'/images/man2.png'} alt={'man'} width={300} height={300} className="hidden md:block" />
