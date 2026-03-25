@@ -169,7 +169,8 @@ export default function Home() {
                 <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>About</Link>
                 <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>Program</Link>
                 <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>Youth Policy</Link>
-                <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>Privacy Policy</Link>
+              <Link className={'text-white text-sm sm:text-base md:text-lg'} href='/'>Privacy Policy</Link>
+              <Link className={"text-white text-sm sm:texttext-base md:text-lg"} href='/'>Yopi Tracker</Link>
               </div>
             </div>
           </div>
