@@ -181,8 +181,9 @@ export default function Home() {
   }, [nextProgram]);
 
   return (
-      <div className={'w-screen bg-white'}>
-        <div className={'mx-auto flex flex-col sm:flex-row items-center justify-between px-2 py-2 bg-white'}>
+    <div className={'w-screen bg-white'}>
+      {/** header */}
+        <div className={'w-full flex flex-col sm:flex-row items-center justify-between px-6 py-4 bg-white'}>
           <div className="flex items-center">
             <Image className={'mr-2'} src={'/images/fmyd_logo.png'} alt={'logo'} width={80} height={80} />
           </div>
@@ -190,7 +191,7 @@ export default function Home() {
             <h1 className={'text-black text-xl sm:text-2xl font-bold'}>Yopi Tracker</h1>
             <p className={'text-black text-sm sm:text-base md:text-lg italic font-medium'}>a one stop shop for youth activities.</p>
           </div>
-          <div className={'grow sm:my-0 flex flex-wrap items-center justify-center gap-2 md:gap-4 lg:gap-8'}>
+          <div className={'flex flex-wrap items-center justify-center gap-4 md:gap-6 lg:gap-10'}>
             <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Home</Link>
             <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>About</Link>
             <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Program</Link>
@@ -218,7 +219,7 @@ export default function Home() {
                                   alt={image.alt}
                                   height={300}
                                   width={500}
-                                  className="object-center"
+                                  className="object-cover"
                                 />
                               </div>
                             ))}
