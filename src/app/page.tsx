@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {FaChevronLeft, FaChevronRight, FaSearch} from "react-icons/fa";
@@ -126,7 +126,7 @@ export default function Home() {
   const galleryImages = [
   { src: '/images/chef_small.png', alt: 'chef' },
   { src: '/images/corpers.png', alt: 'corpers' },
-  { src: '/images/student.png', alt: 'student' },
+  { src: '/images/students.png', alt: 'student' },
 ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -182,140 +182,106 @@ export default function Home() {
   return (
       <div className={'w-screen'}>
         <div className={''}>
-          <div className={'mx-auto flex flex-col sm:flex-row items-center px-2 py-2 bg-[#277B12]'}>
-            <div className="flex items-center">
-              <Image className={'mr-2'} src={'/images/fmyd_logo.png'} alt={'logo'} width={80} height={80} />
-              <h1 className={'text-white text-xl sm:text-2xl font-bold'}>Yopi Tracker</h1>
-            </div>
-            <div className={'grow sm:my-0'}>
-              <div className={'flex flex-wrap items-center justify-center gap-2 md:gap-4 lg:gap-8'}>
-                <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>Home</Link>
-                <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>About</Link>
-                <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>Program</Link>
-                <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>Youth Policy</Link>
-              <Link className={'text-white text-sm sm:text-base md:text-lg'} href='/'>Privacy Policy</Link>
-              <Link className={"text-white text-sm sm:texttext-base md:text-lg"} href='/urep'>UREP</Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Slideshow Section */}
-          section className="bg-white py-12 min-[741px]:py-20 min-[1011px]:py-24 overflow-hidden">
-                  <div className="mx-auto max-w-7xl px-12 min-[741px]:px-20 lg:px-32">
-                    <div className="relative group max-w-5xl mx-auto">
-              
-            
-              <div className="relative overflow-hidden rounded-xl border-2 border-gray-200 aspect-[16/8] min-[741px]:aspect-[21/9] bg-gray-50">
-                <div 
-                  className="flex transition-transform duration-700 ease-in-out h-full"
-                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                >
-                  {galleryImages.map((image, index) => (
-                    <div key={index} className="relative min-w-full h-full">
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="object-cover"
-                      />
+        <div className={'mx-auto flex flex-col sm:flex-row items-center justify-between px-2 py-2 bg-white'}>
+                    <div className="flex items-center">
+                      <Image className={'mr-2'} src={'/images/fmyd_logo.png'} alt={'logo'} width={80} height={80} />
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              {/*card grids*/}
-              <div className="'w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16'">
-                <div>
-                  <image
-                    src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="object-cover"></image>
-                  <p>Lorem Ipsum
-                  </p>
-                  <button className="absolute min[1011]">Read more</button>
-                </div>
-                <div>
-                </div>
-                <div>
-                </div>
-              </div>
-             
-    
+                    <div className="flex flex-col items-center">
+                      <h1 className={'text-black text-xl sm:text-2xl font-bold'}>Yopi Tracker</h1>
+                      <p className={'text-black text-sm sm:text-base md:text-lg italic font-medium'}>a one stop shop for youth activities.</p>
+                    </div>
+                      <div className={'grow sm:my-0 flex flex-wrap items-center justify-center gap-2 md:gap-4 lg:gap-8'}>
+                        <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Home</Link>
+                        <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>About</Link>
+                        <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Program</Link>
+                        <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Youth Policy</Link>
+                        <Link className={'text-black text-sm sm:text-base md:text-lg'} href='/'>Privacy Policy</Link>
+                        <Link className={"text-black text-sm sm:texttext-base md:text-lg"} href='/urep'>UREP</Link>
+                      </div>
+        </div>
+        
+          {/* Slideshow Section */}
+        <div className="flex flex-row mb-12">
+          <Image src={'/images/man1.png'} alt="man1" width={510} height={300} className={'object-cover'} />
+          <section className="bg-white overflow-hidden">
+              <div className="mx-auto max-w-7xl px-12 min-[741px]:px-20 lg:px-32">
+                <div className="relative group max-w-5xl mx-auto">
+                  <div className="relative overflow-hidden rounded-xl border-2 border-gray-200 bg-gray-50">
+                    <div 
+                      className="flex transition-transform duration-700 ease-in-out"
+                            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                          >
+                            {galleryImages.map((image, index) => (
+                              <div key={index} className="relative min-w-full h-full">
+                                <Image
+                                  src={image.src}
+                                  alt={image.alt}
+                                  height={500}
+                                  width={500}
+                                  className="object-center"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <button
+                          onClick={prevSlide}
+                          className="absolute -left-10 min-[741px]:-left-16 min-[1011px]:-left-24 top-1/2 -translate-y-1/2 text-emerald-600 hover:text-emerald-700 transition-all hover:scale-110 p-2"
+                          aria-label="Previous slide"
+                        >
+                          <FaChevronLeft className="h-10 w-10 min-[741px]:h-14 min-[741px]:w-14 stroke-[1.5px]"/>
+                        </button>
               
-              <button
-                onClick={prevSlide}
-                className="absolute -left-10 min-[741px]:-left-16 min-[1011px]:-left-24 top-1/2 -translate-y-1/2 text-emerald-600 hover:text-emerald-700 transition-all hover:scale-110 p-2"
-                aria-label="Previous slide"
-              >
-                <ChevronLeft className="h-10 w-10 min-[741px]:h-14 min-[741px]:w-14 stroke-[1.5px]" />
-              </button>
-    
+                        
+                        <button
+                          onClick={nextSlide}
+                          className="absolute -right-10 min-[741px]:-right-16 min-[1011px]:-right-24 top-1/2 -translate-y-1/2 text-emerald-600 hover:text-emerald-700 transition-all hover:scale-110 p-2"
+                          aria-label="Next slide"
+                        >
+                          <FaChevronRight className="h-10 w-10 min-[741px]:h-14 min-[741px]:w-14 stroke-[1.5px]" />
+                        </button>
               
-              <button
-                onClick={nextSlide}
-                className="absolute -right-10 min-[741px]:-right-16 min-[1011px]:-right-24 top-1/2 -translate-y-1/2 text-emerald-600 hover:text-emerald-700 transition-all hover:scale-110 p-2"
-                aria-label="Next slide"
-              >
-                <ChevronRight className="h-10 w-10 min-[741px]:h-14 min-[741px]:w-14 stroke-[1.5px]" />
-              </button>
-    
+                        
+                        <div className="flex justify-center gap-3 mt-8">
+                          {galleryImages.map((_, index) => (
+                            <button
+                              key={index}
+                              onClick={() => setCurrentIndex(index)}
+                              className={`h-2.5 transition-all duration-300 rounded-full ${
+                                currentIndex === index ? 'w-10 bg-emerald-600' : 'w-2.5 bg-gray-300 hover:bg-gray-400'
+                              }`}
+                            />
+                          ))}
+                        </div>
               
-              <div className="flex justify-center gap-3 mt-8">
-                {galleryImages.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`h-2.5 transition-all duration-300 rounded-full ${
-                      currentIndex === index ? 'w-10 bg-emerald-600' : 'w-2.5 bg-gray-300 hover:bg-gray-400'
-                    }`}
-                  />
-                ))}
-              </div>
-    
-            </div>
-          </div>
-        </section>
+                      </div>
+                    </div>
+                  </section>
+          <Image src={'/images/new_logo.png'} alt="woman 1" width={510} height={250} className={'object-cover scale-x-[-1]'} />
+        </div>
 
 
         
           {/*grid boxes by usman*/}
-        <div className={'w-full bg-[#277B12]  overflow-hidden'}>
-          <div className={'flex flex-col sm:flex-row flex wrap items justify-center gap 4'}>
-            <div className={'flex flex-col sm:flex-row flex wrap item justify center'}>
-              <image src={'/images/chef_small.png'} alt={'bakepreneur'} width={} className={'w-full sm:w-[calc(50%-8px)]'}</>
-                <p><p/>
+        <div className={'w-full bg-white  overflow-hidden mt-14'}>
+          <div className={'flex flex-col sm:flex-row wrap items justify-center gap 4'}>
+            <div className={'flex flex-col sm:flex-row wrap item justify center'}>
+              <Image src={'/images/chef_small.png'} alt={'bakepreneur'} height={400} width={300} className={''}/>
+                <p></p>
                 <button className={'text-white text-sm text-center'}>Read more</button>
             </div>
-            <div className={'flex flex-col sm:flex-row flex wrap item justify center'}>
-              <image src={'/images/chef_small.png'} alt={'bakepreneur'} width={} className={'w-full sm:w-[calc(50%-8px)]'}</>
-                <p><p/>
+            <div className={'flex flex-col sm:flex-row wrap item justify center'}>
+              <Image src={'/images/chef_small.png'} alt={'bakepreneur'} height={400} width={300} className={''}/>
+                <p></p>
                 <button className={'text-white text-sm text-center'}>Read more</button>
             </div>
-            <div className={'flex flex-col sm:flex-row flex wrap item justify center'}>
-              <image src={'/images/chef_small.png'} alt={'bakepreneur'} width={} className={'w-full sm:w-[calc(50%-8px)]'}</>
-                <p><p/>
+            <div className={'flex flex-col sm:flex-row wrap item justify center'}>
+              <Image src={'/images/chef_small.png'} alt={'bakepreneur'} height={400} width={300} className={''}/>
+                <p></p>
                 <button className={'text-white text-sm text-center'}>Read more</button>
             </div>
           </div>
         </div>
-
-          
-
-         
-          {/* Programs Sections */}
-          <div className={'w-full bg-[#277B12]  overflow-hidden'}>
-            <div className={'flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4'}>
-              <Image src={'/images/chef_small.png'} alt={'bakeprenuer'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'}/>
-              <Image src={'/images/corpers.png'} alt={'national_youth'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
-              <Image src={'/images/students.png'} alt={'youth_migration'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
-              <Image src={'/images/newer_pic.png'} alt={'african_youth'} width={510} height={300} className={'w-full sm:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] h-[200px] sm:h-[250px] md:h-[300px] object-cover'} />
-            </div>
-          </div>
-
-         
-
-
             {/* Active Programs Section */}
           <div className={'flex flex-col w-full items-center justify-center px-8'}>
             <h3 className={'text-center text-xl md:text-xl text-[#277B12] font-semibold my-7'}>Active Programs</h3>
