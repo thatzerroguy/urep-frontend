@@ -122,7 +122,31 @@ export default function Home() {
       date: '01/11/2025',
     }
   ];
+    //slideshow function by usman
+  const galleryImages = [
+  { src: '/images/chef_small.png', alt: 'chef' },
+  { src: '/images/corpers.png', alt: 'corpers' },
+  { src: '/images/student.png', alt: 'student' },
+];
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+  }, []);
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
+  
   // State for the current program index
   const [currentProgramIndex, setCurrentProgramIndex] = useState(0);
   const currentProgram = programsData[currentProgramIndex];
@@ -175,40 +199,110 @@ export default function Home() {
             </div>
           </div>
 
-          {/* FMYD Intro Section */}
-          <div className={'flex flex-col items-center w-full'}>
-            <div className={'flex flex-col md:flex-row justify-center items-center gap-6 md:gap-x-8 lg:gap-x-16'}>
-              <Image src={'/images/man1.png'} alt={'man'} width={300} height={300} className="hidden md:block" />
-
-              <div className={'flex flex-col items-center gap-y-2 text-center px-4'}>
-                <h1 className={'text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#277B12]'}>FMYD</h1>
-                <h2 className={'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-black'}>UNIFIED REGISTRATION PORTAL</h2>
-                <h2 className={'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-black'}>(UREP)</h2>
-                <h4 className={'text-black text-base sm:text-lg md:text-xl text-center'}>REALTIME YOUTH POLICY MONITORING AND EMPOWERMENT PROGRAMS</h4>
-                <h4 className={"text-black text-base sm:text-lg md:text-sm˝ text-center italic"}>A ONE STOP SHOP FOR YOUTH ACTIVITIES</h4>
+          {/* Slideshow Section */}
+          section className="bg-white py-12 min-[741px]:py-20 min-[1011px]:py-24 overflow-hidden">
+                  <div className="mx-auto max-w-7xl px-12 min-[741px]:px-20 lg:px-32">
+                    <div className="relative group max-w-5xl mx-auto">
+              
+            
+              <div className="relative overflow-hidden rounded-xl border-2 border-gray-200 aspect-[16/8] min-[741px]:aspect-[21/9] bg-gray-50">
+                <div 
+                  className="flex transition-transform duration-700 ease-in-out h-full"
+                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                >
+                  {galleryImages.map((image, index) => (
+                    <div key={index} className="relative min-w-full h-full">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <Image src={'/images/new_logo.png'} alt={'man'} width={300} height={400} className="hidden md:block scale-x-[-1]" />
+              {/*card grids*/}
+              <div className="'w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16'">
+                <div>
+                  <image
+                    src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover"></image>
+                  <p>Lorem Ipsum
+                  </p>
+                  <button className="absolute min[1011]">Read more</button>
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+              </div>
+             
+    
+              
+              <button
+                onClick={prevSlide}
+                className="absolute -left-10 min-[741px]:-left-16 min-[1011px]:-left-24 top-1/2 -translate-y-1/2 text-emerald-600 hover:text-emerald-700 transition-all hover:scale-110 p-2"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="h-10 w-10 min-[741px]:h-14 min-[741px]:w-14 stroke-[1.5px]" />
+              </button>
+    
+              
+              <button
+                onClick={nextSlide}
+                className="absolute -right-10 min-[741px]:-right-16 min-[1011px]:-right-24 top-1/2 -translate-y-1/2 text-emerald-600 hover:text-emerald-700 transition-all hover:scale-110 p-2"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="h-10 w-10 min-[741px]:h-14 min-[741px]:w-14 stroke-[1.5px]" />
+              </button>
+    
+              
+              <div className="flex justify-center gap-3 mt-8">
+                {galleryImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`h-2.5 transition-all duration-300 rounded-full ${
+                      currentIndex === index ? 'w-10 bg-emerald-600' : 'w-2.5 bg-gray-300 hover:bg-gray-400'
+                    }`}
+                  />
+                ))}
+              </div>
+    
             </div>
           </div>
+        </section>
 
-          {/* Databank Registration Banner */}
-          <div className="w-full bg-[#277B12] bg-opacity-10 py-10 my-4 flex justify-center">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 max-w-5xl px-4 text-center md:text-left">
-              <div className="bg-white p-3 shadow-md">
-                <Image src="/images/fmyd_logo.png" alt="FMYD Logo" width={80} height={80} />
-              </div>
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Register to be a recognised youth in Nigeria</h2>
-                <p className="text-white mb-4 max-w-2xl text-sm md:text-base">
-                  Join the National Youth Databank to access exclusive opportunities, training, financial support, and mentorship tailored for your growth and development.
-                </p>
-                <Link href="/databank" className="bg-[#277B12] text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors inline-block shadow-md">
-                  Register Now
-                </Link>
-              </div>
+
+        
+          {/*grid boxes by usman*/}
+        <div className={'w-full bg-[#277B12]  overflow-hidden'}>
+          <div className={'flex flex-col sm:flex-row flex wrap items justify-center gap 4'}>
+            <div className={'flex flex-col sm:flex-row flex wrap item justify center'}>
+              <image src={'/images/chef_small.png'} alt={'bakepreneur'} width={} className={'w-full sm:w-[calc(50%-8px)]'}</>
+                <p><p/>
+                <button className={'text-white text-sm text-center'}>Read more</button>
+            </div>
+            <div className={'flex flex-col sm:flex-row flex wrap item justify center'}>
+              <image src={'/images/chef_small.png'} alt={'bakepreneur'} width={} className={'w-full sm:w-[calc(50%-8px)]'}</>
+                <p><p/>
+                <button className={'text-white text-sm text-center'}>Read more</button>
+            </div>
+            <div className={'flex flex-col sm:flex-row flex wrap item justify center'}>
+              <image src={'/images/chef_small.png'} alt={'bakepreneur'} width={} className={'w-full sm:w-[calc(50%-8px)]'}</>
+                <p><p/>
+                <button className={'text-white text-sm text-center'}>Read more</button>
             </div>
           </div>
+        </div>
+
+          
+
+         
           {/* Programs Sections */}
           <div className={'w-full bg-[#277B12]  overflow-hidden'}>
             <div className={'flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4'}>
@@ -219,134 +313,68 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Search and Sort Buttons */}
-          <div className={'flex flex-row space-x-4 mt-6 md:mt-10 justify-between w-full px-8'}>
-            <div className={'w-44 h-12 bg-[#277B12] rounded-lg flex flex-row justify-evenly items-center'}>
-              <FaSearch color={'white'} size={18}></FaSearch>
-              <p className={'text-white text-center font-medium'}>Search</p>
-            </div>
-            <div className={'w-32 h-12 border border-[#277B12] rounded-lg flex flex-row justify-evenly items-center'}>
-              <FaSliders color={'black'} size={18}></FaSliders>
-              <p className={'text-black text-center font-medium'}>Sort</p>
-              <FaSort color={'black'} size={18}></FaSort>
-            </div>
-          </div>
+         
 
 
-          {/*Active programs sections*/}
-          <div className={'flex flex-col my-6 md:mt-6 w-[95%] mx-auto'}>
-            <h2 className={'font-semibold text-xl text-center text-[#277B12] mb-4 md:mb-5'}>Active Programs</h2>
+            {/* Active Programs Section */}
+          <div className={'flex flex-col w-full items-center justify-center px-8'}>
+            <h3 className={'text-center text-xl md:text-xl text-[#277B12] font-semibold my-7'}>Active Programs</h3>
 
-            <div className={'flex flex-col lg:flex-row gap-6'}>
-              {/* Program Card Carousel */}
-              <div className={'flex-1 relative'}>
-                <div className={'flex flex-col justify-center bg-gradient-to-b from-[#277B12] to-[#F9E79F] rounded-lg shadow-xl p-6 h-[550px] md:h-[550px] lg:h-[518px] overflow-y-auto'}>
-                  <h2 className={'font-semibold text-xl text-center text-black mb-3 md:mb-4 pt-3'}>{currentProgram.title}</h2>
-                  <div className={'flex flex-col lg:flex-row items-center gap-4'}>
-                    <div className={'flex-col justify-start w-full lg:w-1/2'}>
-                      <h1 className={'text-white text-lg md:text-xl font-semibold'}>Background</h1>
-                      <p className={'text-black font-normal text-xs md:text-sm text-wrap leading-5 mb-2'}>
-                        {currentProgram.background}
-                      </p>
-                      <h3 className={'text-sm md:text-base text-white font-semibold'}>Learn More</h3>
-
-                      <hr className="my-2"/>
-
-                      <h1 className={'text-white text-lg md:text-xl font-semibold'}>Objectives</h1>
-                      <ul className="pl-2 mb-2">
-                        {currentProgram.objectives.map((objective, index) => (
-                          <li key={index} className={'text-black font-normal text-xs md:text-sm text-wrap leading-5'}>
-                            {objective}
-                          </li>
-                        ))}
-                      </ul>
-                      <h3 className={'text-sm md:text-base text-white font-semibold'}>Learn More</h3>
-
-                      <hr className="my-2"/>
-
-                      <h1 className={'text-white text-lg md:text-xl font-semibold'}>Who Should Attend</h1>
-                      <ul className="pl-2 mb-2">
-                        {currentProgram.targetAudience.map((audience, index) => (
-                          <li key={index} className={'text-black font-normal text-xs md:text-sm text-wrap leading-5'}>
-                            {audience}
-                          </li>
-                        ))}
-                      </ul>
-                      <h3 className={'text-sm md:text-base text-white font-semibold'}>Learn More</h3>
-                    </div>
-
-                    <div className={'flex flex-col justify-center items-center w-full lg:w-1/2'}>
-                      <div className={'w-full max-w-[350px] object-cover'}>
-                        <Image 
-                          src={currentProgram.mainImage} 
-                          alt={currentProgram.title} 
-                          width={450} 
-                          height={350} 
-                          className={'rounded-lg w-full h-[300px] object-cover shadow-md'}
-                        />
-                      </div>
-                      <Link 
-                        href={`/programs/${currentProgram.id}/terms`}
-                        className={'text-center text-base md:text-lg text-[#277B12] font-semibold mt-4 rounded-lg bg-white px-6 py-3 hover:bg-gray-100 transition-colors shadow-md'}
-                      >
-                        Register Now
-                      </Link>
-                    </div>
-                  </div>
-
-                  {/* Date display */}
-                  <div className="flex justify-end mt-2">
-                    <p className="text-black text-sm font-bold">Date: {currentProgram.date}</p>
-                  </div>
+            <div className={'w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16'}>
+              <div className={'h-[250px] px-4 py-4 flex flex-col justify-center items-center shadow-2xl rounded-md'}>
+                <p className="text-center mb-4">LOCAL YOUTH EXCHANGE PROGRAMME</p>
+                <div className={'flex items-center justify-center rounded-lg bg-[#277B12] py-1 w-20'}>
+                  <p className={'text-white text-sm text-center'}>Read More</p>
                 </div>
-
-                {/* Navigation buttons */}
-                <button 
-                  onClick={prevProgram}
-                  className={'absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-2 shadow-md hover:bg-white transition-colors'}
-                >
-                  <FaChevronLeft size={24} color={'#277B12'} />
-                </button>
-
-                <button 
-                  onClick={nextProgram}
-                  className={'absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-2 shadow-md hover:bg-white transition-colors'}
-                >
-                  <FaChevronRight size={24} color={'#277B12'} />
-                </button>
               </div>
-
-              {/* Thumbnail Navigation */}
-              <div className={'w-full lg:w-[20%] flex flex-col'}>
-                <div className={'flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-y-auto lg:max-h-[518px] scrollbar-thin scrollbar-thumb-[#277B12] scrollbar-track-gray-200'}>
-                  {programsData.map((program, index) => (
-                    <div 
-                      key={program.id}
-                      onClick={() => goToProgram(index)}
-                      className={`cursor-pointer transition-all duration-300 ${currentProgramIndex === index ? 'scale-105 ring-2 ring-[#277B12]' : 'opacity-80 hover:opacity-100'}`}
-                    >
-                      <div className={'relative'}>
-                        <Image 
-                          src={program.thumbnailImage} 
-                          alt={program.title} 
-                          width={200} 
-                          height={120} 
-                          className={'rounded-lg w-full h-[120px] object-cover shadow-md'}
-                        />
-                        <div className={'absolute inset-0 bg-black/40 rounded-lg flex items-end'}>
-                          <p className={'text-white text-sm font-medium p-2 truncate w-full'}>
-                            {program.title}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+              <div className={'h-[250px] px-4 py-4 flex flex-col justify-center items-center shadow-2xl rounded-md'}>
+                <p className="text-center mb-4">TRAINING AND EMPOWERMENT OF
+                  YOUTH ON WASTE TO WEALTH
+                  MANAGEMENT, RECYCLING
+                  AND REUSE IN EACH OF
+                  THE 6 GEO-POLITICAL ZONES</p>
+                <div className={'flex items-center justify-center rounded-lg bg-[#277B12] py-1 w-20'}>
+                  <p className={'text-white text-sm text-center'}>Read More</p>
+                </div>
+              </div>
+              <div className={'h-[250px] px-4 py-4 flex flex-col justify-center items-center shadow-2xl rounded-md'}>
+                <p className="text-center mb-4">YOUTH MENTAL HEALTH AND
+                  PSYCHOSOCIAL SUPPORT (MHPS)
+                  PROGRAMME NATION-WIDE</p>
+                <div className={'flex items-center justify-center rounded-lg bg-[#277B12] py-1 w-20'}>
+                  <p className={'text-white text-sm text-center'}>Read More</p>
+                </div>
+              </div>
+              <div className={'h-[250px] px-4 py-4 flex flex-col justify-center items-center shadow-2xl rounded-md'}>
+                <p className="text-center mb-4">REVIEW AND IMPLEMENTATION
+                  OF NIGERIA YOUTH EMPLOYMENT
+                  ACTION PLAN (NIYEAP)</p>
+                <div className={'flex items-center justify-center rounded-lg bg-[#277B12] py-1 w-20'}>
+                  <p className={'text-white text-sm text-center'}>Read More</p>
+                </div>
+              </div>
+              <div className={'h-[250px] px-4 py-4 flex flex-col justify-center items-center shadow-2xl rounded-md'}>
+                <p className="text-center mb-4">ESTABLISHMENT OF TECH/SOCIAL
+                  HUBS IN THE NATIONAL YOUTH
+                  DEVELOPMENT CENTRES
+                  IN TWO ZONES SOUTH AND NORTH</p>
+                <div className={'flex items-center justify-center rounded-lg bg-[#277B12] py-1 w-20'}>
+                  <p className={'text-white text-sm text-center'}>Read More</p>
+                </div>
+              </div>
+              
+            
+              <div className={'h-[250px] px-4 py-4 flex flex-col justify-center items-center shadow-2xl rounded-md'}>
+                <p className="text-center mb-4">CREATIVE ARTS AND
+                  CULTURAL HERITAGE
+                  PRESERVATION INITIATIVE</p>
+                <div className={'flex items-center justify-center rounded-lg bg-[#277B12] py-1 w-20'}>
+                  <p className={'text-white text-sm text-center'}>Read More</p>
                 </div>
               </div>
             </div>
-          </div>
 
-            {/* Other Programs Section */}
+            {/* Upcoming Programs Section */}
           <div className={'flex flex-col w-full items-center justify-center px-8'}>
             <h3 className={'text-center text-xl md:text-xl text-[#277B12] font-semibold my-7'}>Upcoming Programs</h3>
 
@@ -392,30 +420,8 @@ export default function Home() {
                   <p className={'text-white text-sm text-center'}>Read More</p>
                 </div>
               </div>
-              <div className={'h-[250px] px-4 py-4 flex flex-col justify-center items-center shadow-2xl rounded-md'}>
-                <p className="text-center mb-4">YOUTH ENTREPRENEURSHIP
-                  DEVELOPMENT PROGRAM
-                  FOR SUSTAINABLE GROWTH</p>
-                <div className={'flex items-center justify-center rounded-lg bg-[#277B12] py-1 w-20'}>
-                  <p className={'text-white text-sm text-center'}>Read More</p>
-                </div>
-              </div>
-              <div className={'h-[250px] px-4 py-4 flex flex-col justify-center items-center shadow-2xl rounded-md'}>
-                <p className="text-center mb-4">DIGITAL SKILLS TRAINING
-                  FOR RURAL YOUTH
-                  EMPOWERMENT</p>
-                <div className={'flex items-center justify-center rounded-lg bg-[#277B12] py-1 w-20'}>
-                  <p className={'text-white text-sm text-center'}>Read More</p>
-                </div>
-              </div>
-              <div className={'h-[250px] px-4 py-4 flex flex-col justify-center items-center shadow-2xl rounded-md'}>
-                <p className="text-center mb-4">AGRICULTURAL INNOVATION
-                  AND MODERNIZATION
-                  FOR YOUTH FARMERS</p>
-                <div className={'flex items-center justify-center rounded-lg bg-[#277B12] py-1 w-20'}>
-                  <p className={'text-white text-sm text-center'}>Read More</p>
-                </div>
-              </div>
+              
+            
               <div className={'h-[250px] px-4 py-4 flex flex-col justify-center items-center shadow-2xl rounded-md'}>
                 <p className="text-center mb-4">CREATIVE ARTS AND
                   CULTURAL HERITAGE
@@ -425,6 +431,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
           </div>
 
         </div>
