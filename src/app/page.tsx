@@ -6,6 +6,7 @@ import Link from "next/link";
 import {FaChevronLeft, FaChevronRight, FaSearch} from "react-icons/fa";
 import {FaSliders, FaSort} from "react-icons/fa6";
 import FooterBar from "@/components/FooterBar";
+import { Rock_3D } from "next/font/google";
 
 export default function Home() {
   // Program data for the carousel
@@ -125,7 +126,7 @@ export default function Home() {
     //slideshow function by usman
   const galleryImages = [
   { src: '/images/chef_small.png', alt: 'chef' },
-  { src: '/images/corpers.png', alt: 'corpers' },
+  { src: '/images/new_logo.png', alt: 'corpers' },
   { src: '/images/students.png', alt: 'student' },
 ];
 
@@ -180,32 +181,31 @@ export default function Home() {
   }, [nextProgram]);
 
   return (
-      <div className={'w-screen'}>
-        <div className={''}>
+      <div className={'w-screen bg-white'}>
         <div className={'mx-auto flex flex-col sm:flex-row items-center justify-between px-2 py-2 bg-white'}>
-                    <div className="flex items-center">
-                      <Image className={'mr-2'} src={'/images/fmyd_logo.png'} alt={'logo'} width={80} height={80} />
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <h1 className={'text-black text-xl sm:text-2xl font-bold'}>Yopi Tracker</h1>
-                      <p className={'text-black text-sm sm:text-base md:text-lg italic font-medium'}>a one stop shop for youth activities.</p>
-                    </div>
-                      <div className={'grow sm:my-0 flex flex-wrap items-center justify-center gap-2 md:gap-4 lg:gap-8'}>
-                        <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Home</Link>
-                        <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>About</Link>
-                        <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Program</Link>
-                        <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Youth Policy</Link>
-                        <Link className={'text-black text-sm sm:text-base md:text-lg'} href='/'>Privacy Policy</Link>
-                        <Link className={"text-black text-sm sm:texttext-base md:text-lg"} href='/urep'>UREP</Link>
-                      </div>
+          <div className="flex items-center">
+            <Image className={'mr-2'} src={'/images/fmyd_logo.png'} alt={'logo'} width={80} height={80} />
+          </div>
+          <div className="flex flex-col items-center">
+            <h1 className={'text-black text-xl sm:text-2xl font-bold'}>Yopi Tracker</h1>
+            <p className={'text-black text-sm sm:text-base md:text-lg italic font-medium'}>a one stop shop for youth activities.</p>
+          </div>
+          <div className={'grow sm:my-0 flex flex-wrap items-center justify-center gap-2 md:gap-4 lg:gap-8'}>
+            <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Home</Link>
+            <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>About</Link>
+            <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Program</Link>
+            <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Youth Policy</Link>
+            <Link className={'text-black text-sm sm:text-base md:text-lg'} href='/'>Privacy Policy</Link>
+            <Link className={"text-black text-sm sm:texttext-base md:text-lg"} href='/urep'>UREP</Link>
+          </div>
         </div>
         
-          {/* Slideshow Section */}
-        <div className="flex flex-row mb-12">
+        {/* Slideshow Section */}
+        <div className="flex flex-row mb-12 justify-between">
           <Image src={'/images/man1.png'} alt="man1" width={510} height={300} className={'object-cover'} />
           <section className="bg-white overflow-hidden">
-              <div className="mx-auto max-w-7xl px-12 min-[741px]:px-20 lg:px-32">
-                <div className="relative group max-w-5xl mx-auto">
+              <div className="mx-auto">
+                <div className="relative group max-w-5xl ">
                   <div className="relative overflow-hidden rounded-xl border-2 border-gray-200 bg-gray-50">
                     <div 
                       className="flex transition-transform duration-700 ease-in-out"
@@ -216,7 +216,7 @@ export default function Home() {
                                 <Image
                                   src={image.src}
                                   alt={image.alt}
-                                  height={500}
+                                  height={300}
                                   width={500}
                                   className="object-center"
                                 />
@@ -224,25 +224,7 @@ export default function Home() {
                             ))}
                           </div>
                         </div>
-                        <button
-                          onClick={prevSlide}
-                          className="absolute -left-10 min-[741px]:-left-16 min-[1011px]:-left-24 top-1/2 -translate-y-1/2 text-emerald-600 hover:text-emerald-700 transition-all hover:scale-110 p-2"
-                          aria-label="Previous slide"
-                        >
-                          <FaChevronLeft className="h-10 w-10 min-[741px]:h-14 min-[741px]:w-14 stroke-[1.5px]"/>
-                        </button>
-              
-                        
-                        <button
-                          onClick={nextSlide}
-                          className="absolute -right-10 min-[741px]:-right-16 min-[1011px]:-right-24 top-1/2 -translate-y-1/2 text-emerald-600 hover:text-emerald-700 transition-all hover:scale-110 p-2"
-                          aria-label="Next slide"
-                        >
-                          <FaChevronRight className="h-10 w-10 min-[741px]:h-14 min-[741px]:w-14 stroke-[1.5px]" />
-                        </button>
-              
-                        
-                        <div className="flex justify-center gap-3 mt-8">
+                        {/*<div className="flex justify-center gap-3 mt-8">
                           {galleryImages.map((_, index) => (
                             <button
                               key={index}
@@ -252,17 +234,20 @@ export default function Home() {
                               }`}
                             />
                           ))}
-                        </div>
-              
+                        </div>*/}
                       </div>
                     </div>
                   </section>
-          <Image src={'/images/new_logo.png'} alt="woman 1" width={510} height={250} className={'object-cover scale-x-[-1]'} />
+          <Image src={'/images/new_logo.png'} alt="woman 1" width={510} height={300} className={'object-cover scale-x-[-1]'} />
         </div>
 
 
         
           {/*grid boxes by usman*/}
+        {/* Active Programs Section */}
+        
+          <div className={'flex flex-col w-full items-center justify-center px-8'}>
+        <h3 className={'text-center text-xl md:text-xl text-[#277B12] font-semibold my-7'}></h3>
         <div className={'w-full bg-white  overflow-hidden mt-14'}>
           <div className={'flex flex-col sm:flex-row wrap items justify-center gap 4'}>
             <div className={'flex flex-col sm:flex-row wrap item justify center'}>
@@ -282,10 +267,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-            {/* Active Programs Section */}
-          <div className={'flex flex-col w-full items-center justify-center px-8'}>
-            <h3 className={'text-center text-xl md:text-xl text-[#277B12] font-semibold my-7'}>Active Programs</h3>
-
+        <h3 className={'text-center text-xl md:text-xl text-[#277B12] font-semibold my-7'}>Active Programs</h3>
             <div className={'w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16'}>
               <div className={'h-[250px] px-4 py-4 flex flex-col justify-center items-center shadow-2xl rounded-md'}>
                 <p className="text-center mb-4">LOCAL YOUTH EXCHANGE PROGRAMME</p>
@@ -399,8 +381,6 @@ export default function Home() {
             </div>
           </div>
           </div>
-
-        </div>
         <FooterBar/>
       </div>
   );
