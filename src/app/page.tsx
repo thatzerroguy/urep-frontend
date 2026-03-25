@@ -3,7 +3,7 @@
 import React, {useEffect, useState, useCallback} from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {FaChevronLeft, FaChevronRight, FaSearch} from "react-icons/fa";
+import {FaChevronLeft, FaChevronRight, FaFacebook, FaInstagram, FaSearch, FaTelegram} from "react-icons/fa";
 import {FaSliders, FaSort} from "react-icons/fa6";
 import FooterBar from "@/components/FooterBar";
 import { Rock_3D } from "next/font/google";
@@ -170,6 +170,8 @@ export default function Home() {
   const goToProgram = (index: React.SetStateAction<number>) => {
     setCurrentProgramIndex(index);
   };
+  
+  const home = () => {}
 
   // Auto-slide effect
   useEffect(() => {
@@ -183,6 +185,14 @@ export default function Home() {
   return (
     <div className={'w-screen bg-white'}>
       {/** header */}
+        <div className="flex bg-[#277B12] w-full h-12 justify-between">
+          <button onClick={home} className="flex text-white text-sm sm:text-base md:text-lg outline outline-white justify-self-start pl-2 pt-2">Back to FMYD</button>
+          <div className="flex flex-row items-center flex-1 justify-end gap-8">
+            <FaFacebook size={20} color={'white'} className={'mt-4'}/>
+            <FaInstagram size={20} color={'white'} className={'mt-4'}/>
+            <FaTelegram size={20} color={'white'} className={'mt-4'}/>
+          </div>
+        </div>
         <div className={'w-full flex flex-col sm:flex-row items-center justify-between px-6 py-4 bg-white'}>
           <div className="flex items-center">
             <Image className={'mr-2'} src={'/images/fmyd_logo.png'} alt={'logo'} width={80} height={80} />
@@ -194,9 +204,9 @@ export default function Home() {
           <div className={'flex flex-wrap items-center justify-center gap-4 md:gap-6 lg:gap-10'}>
             <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Home</Link>
             <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>About</Link>
-            <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Program</Link>
-            <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Youth Policy</Link>
-            <Link className={'text-black text-sm sm:text-base md:text-lg'} href='/'>Privacy Policy</Link>
+            <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>UREP</Link>
+            <Link className={'text-black text-sm sm:text-base md:text-lg'} href= '/'>Endorser</Link>
+            <Link className={'text-black text-sm sm:text-base md:text-lg'} href='/databank'>Youth Databank</Link>
             <Link className={"text-black text-sm sm:texttext-base md:text-lg"} href='/urep'>UREP</Link>
           </div>
         </div>
@@ -248,7 +258,7 @@ export default function Home() {
         {/* Active Programs Section */}
         
           <div className={'flex flex-col w-full items-center justify-center px-8'}>
-        <h3 className={'text-center text-xl md:text-xl text-[#277B12] font-semibold my-7'}></h3>
+        <h3 className={'text-center text-xl md:text-xl text-[#277B12] font-semibold my-7'}>UPDATES</h3>
         <div className={'w-full bg-white  overflow-hidden mt-14'}>
           <div className={'flex flex-col sm:flex-row wrap items justify-center gap 4'}>
             <div className={'flex flex-col sm:flex-row wrap item justify center'}>
