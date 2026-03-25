@@ -7,7 +7,7 @@ import {FaChevronLeft, FaChevronRight, FaSearch} from "react-icons/fa";
 import {FaSliders, FaSort} from "react-icons/fa6";
 import FooterBar from "@/components/FooterBar";
 
-export default function Home() {
+export default function Urep() {
   // Program data for the carousel
   const programsData = [
     {
@@ -169,43 +169,8 @@ export default function Home() {
                 <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>About</Link>
                 <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>Program</Link>
                 <Link className={'text-white text-sm sm:text-base md:text-lg'} href= '/'>Youth Policy</Link>
-              <Link className={'text-white text-sm sm:text-base md:text-lg'} href='/'>Privacy Policy</Link>
-              <Link className={"text-white text-sm sm:texttext-base md:text-lg"} href='/urep'>UREP</Link>
-              </div>
-            </div>
-          </div>
-
-          {/* FMYD Intro Section */}
-          <div className={'flex flex-col items-center w-full'}>
-            <div className={'flex flex-col md:flex-row justify-center items-center gap-6 md:gap-x-8 lg:gap-x-16'}>
-              <Image src={'/images/man1.png'} alt={'man'} width={300} height={300} className="hidden md:block" />
-
-              <div className={'flex flex-col items-center gap-y-2 text-center px-4'}>
-                <h1 className={'text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#277B12]'}>FMYD</h1>
-                <h2 className={'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-black'}>UNIFIED REGISTRATION PORTAL</h2>
-                <h2 className={'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-black'}>(UREP)</h2>
-                <h4 className={'text-black text-base sm:text-lg md:text-xl text-center'}>REALTIME YOUTH POLICY MONITORING AND EMPOWERMENT PROGRAMS</h4>
-                <h4 className={"text-black text-base sm:text-lg md:text-sm˝ text-center italic"}>A ONE STOP SHOP FOR YOUTH ACTIVITIES</h4>
-              </div>
-
-              <Image src={'/images/new_logo.png'} alt={'man'} width={300} height={400} className="hidden md:block scale-x-[-1]" />
-            </div>
-          </div>
-
-          {/* Databank Registration Banner */}
-          <div className="w-full bg-[#277B12] bg-opacity-10 py-10 my-4 flex justify-center">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 max-w-5xl px-4 text-center md:text-left">
-              <div className="bg-white p-3 shadow-md">
-                <Image src="/images/fmyd_logo.png" alt="FMYD Logo" width={80} height={80} />
-              </div>
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Register to be a recognised youth in Nigeria</h2>
-                <p className="text-white mb-4 max-w-2xl text-sm md:text-base">
-                  Join the National Youth Databank to access exclusive opportunities, training, financial support, and mentorship tailored for your growth and development.
-                </p>
-                <Link href="/databank" className="bg-[#277B12] text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors inline-block shadow-md">
-                  Register Now
-                </Link>
+                <Link className={'text-white text-sm sm:text-base md:text-lg'} href='/'>Privacy Policy</Link>
+                <Link className={"text-white text-sm sm:texttext-base md:text-lg"} href='/urep'>UREP</Link>
               </div>
             </div>
           </div>
