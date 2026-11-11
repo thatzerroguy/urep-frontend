@@ -14,9 +14,12 @@ export const metadata: Metadata = {
   title: "Unified Registration Portal",
   description: "Unified Registration Portal for FMYD Programs",
   icons: {
-    icon: '/images/fmyd_logo.png', // Using the existing FMYD logo from your images folder
-    shortcut: '/images/fmyd_logo.png',
-    apple: '/images/fmyd_logo.png',
+    icon: [
+      { url: '/icon.png', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
   },
 };
 

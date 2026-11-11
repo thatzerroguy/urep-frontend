@@ -35,12 +35,12 @@ export function Hero() {
         <div className="flex flex-row items-center justify-center gap-6 w-full">
           {/* Image BEFORE (Left) */}
           <div className="hidden min-[741px]:block w-1/4 max-w-sm">
-            <div className="relative w-full h-80 aspect-square rounded-xl overflow-hidden border-2 border-gray-200">
+            <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
               <Image
                 src="/man1.png"
                 alt="Before slideshow image"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
           </div>
@@ -87,12 +87,12 @@ export function Hero() {
 
           {/* Image AFTER (Right) */}
           <div className="hidden min-[741px]:block w-1/4 max-w-sm">
-            <div className="relative w-full h-80 aspect-square rounded-xl overflow-hidden border-2 border-gray-200">
+            <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
               <Image
                 src="/woman2.jpeg"
                 alt="After slideshow image"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
           </div>
