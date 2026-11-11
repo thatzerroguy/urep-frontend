@@ -60,7 +60,7 @@ export function Header() {
             Unified Registration Portal
           </h1>
           <p className="text-black text-xs sm:text-sm italic font-medium">
-            a unified portal for all youth programs.
+            a unified registration portal for all youth programs.
           </p>
         </div>
 
