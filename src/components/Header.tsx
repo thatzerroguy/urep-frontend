@@ -14,7 +14,7 @@ export function Header() {
   const navLinks = [
     { label: "Home", href: "/" },
     // { label: "About", href: "/#about" },
-    { label: "Back to FMYD", href: "https://fmyd.gov.ng/", external: true },
+    { label: "FMYD", href: "https://fmyd.gov.ng/", external: true },
     // { label: "Program", href: "/#programs" },
     // { label: "Endorser", href: "/#endorser" },
     { label: "Youth Databank", href: "/databank" },
@@ -40,39 +40,6 @@ export function Header() {
 
   return (
     <header className="w-full">
-      {/* Top Bar */}
-      <div className="flex bg-[#277B12] w-full h-10 sm:h-12 justify-end items-center px-4 sm:px-10">
-        <div className="flex flex-row items-center gap-6">
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            className="text-white hover:opacity-80 transition-opacity"
-          >
-            <FaFacebook size={18} />
-          </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="text-white hover:opacity-80 transition-opacity"
-          >
-            <FaInstagram size={18} />
-          </a>
-          <a
-            href="https://t.me"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Telegram"
-            className="text-white hover:opacity-80 transition-opacity"
-          >
-            <FaTelegram size={18} />
-          </a>
-        </div>
-      </div>
-
       {/* Main Navigation Bar */}
       <div className="w-full flex flex-col md:flex-row items-center justify-between px-4 sm:px-10 py-2 bg-white shadow-sm gap-3 border-b-[1px] border-green-500">
         <div className="flex items-center">
@@ -93,7 +60,7 @@ export function Header() {
             Unified Registration Portal
           </h1>
           <p className="text-black text-xs sm:text-sm italic font-medium">
-            a one stop shop for youth activities.
+            a unified portal for all youth activities.
           </p>
         </div>
 
@@ -167,12 +134,44 @@ export function Header() {
         </nav>
 
         {/* Login / Register Button — swaps based on current page */}
-        <Link
-          href={pathname === "/login" ? "/register" : "/login"}
-          className="ml-2 shrink-0 bg-[#277B12] text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-[#1b5c0d] transition-colors"
-        >
-          {pathname === "/login" ? "Register" : "Login"}
-        </Link>
+        <div className="flex flex-col items-end gap-1.5 shrink-0">
+          {/* Social icons above login button */}
+          <div className="flex flex-row items-center gap-3">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="text-[#277B12] hover:opacity-70 transition-opacity"
+            >
+              <FaFacebook size={16} />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-[#277B12] hover:opacity-70 transition-opacity"
+            >
+              <FaInstagram size={16} />
+            </a>
+            <a
+              href="https://t.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Telegram"
+              className="text-[#277B12] hover:opacity-70 transition-opacity"
+            >
+              <FaTelegram size={16} />
+            </a>
+          </div>
+          <Link
+            href={pathname === "/login" ? "/register" : "/login"}
+            className="bg-[#277B12] text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-[#1b5c0d] transition-colors"
+          >
+            {pathname === "/login" ? "Register" : "Login"}
+          </Link>
+        </div>
       </div>
     </header>
   );

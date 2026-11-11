@@ -23,7 +23,6 @@ export default function ProgramTermsTemplate({
   programId,
   programName,
   scope = 'National Youth Initiative',
-  customTerms,
 }: ProgramTermsProps) {
   const router = useRouter();
   const [agreed, setAgreed] = useState(false);
@@ -50,7 +49,7 @@ export default function ProgramTermsTemplate({
       {/* Clean Document Body */}
       <main className="max-w-3xl mx-auto w-full px-6 py-12 sm:py-16 flex-1 text-gray-800">
         <div className="space-y-10 text-sm sm:text-base leading-relaxed">
-          
+
           {/* 1. Introduction */}
           <section className="space-y-3">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
