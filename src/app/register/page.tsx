@@ -14,6 +14,7 @@ export default function RegisterPage() {
     const [currentStep, setCurrentStep] = useState(1);
     const totalSteps = 4;
 
+    const [registrantType, setRegistrantType] = useState('');
     const [nin, setNin] = useState('');
     const [programme, setProgramme] = useState('');
     const [name, setName] = useState('');
@@ -33,6 +34,20 @@ export default function RegisterPage() {
     const [isNINVerified, setIsNINVerified] = useState(false);
     const [otpSent, setOtpSent] = useState(false);
     const [generatedOTP, setGeneratedOTP] = useState('');
+    const requiresNIN = registrantType === 'youth_participant' || registrantType === 'corps_member';
+
+    const registrantTypeOptions = [
+        { value: 'youth_participant', label: 'Youth Participant' },
+        { value: 'corps_member', label: 'Corps Member' },
+        { value: 'guest', label: 'Guest' },
+        { value: 'ministry_of_youth', label: 'Ministry of Youth' },
+    ];
+
+    const genderOptions = [
+        { value: 'Male', label: 'Male' },
+        { value: 'Female', label: 'Female' },
+        { value: 'Other', label: 'Other' },
+    ];
 
     // Section C: Demographics
     const [stateOfOrigin, setStateOfOrigin] = useState('');
@@ -149,6 +164,19 @@ export default function RegisterPage() {
         setIsNINVerified(false);
         setOtpSent(false);
         setOtp('');
+        setName('');
+        setDob('');
+        setGender('');
+        setPhoneNumber('');
+    };
+
+    const handleRegistrantTypeChange = (value: string) => {
+        setRegistrantType(value);
+        setNin('');
+        setIsNINVerified(false);
+        setOtpSent(false);
+        setOtp('');
+        setGeneratedOTP('');
         setName('');
         setDob('');
         setGender('');
@@ -301,6 +329,7 @@ export default function RegisterPage() {
     ];
 
     const governmentAgencyOptions = [
+        { value: 'FEDERAL MINISTRY OF YOUTH DEVELOPMENT', label: 'FEDERAL MINISTRY OF YOUTH DEVELOPMENT' },
         { value: 'CITIZENSHIP AND LEADERSHIP TRAINING CENTRE', label: 'CITIZENSHIP AND LEADERSHIP TRAINING CENTRE' },
         { value: 'FEDERAL MIN. OF WOMEN AFFAIRS AND SOCIAL DEVELOPMENT', label: 'FEDERAL MIN. OF WOMEN AFFAIRS AND SOCIAL DEVELOPMENT' },
         { value: 'FEDERAL MINISTRY OF ENVIRONMENT', label: 'FEDERAL MINISTRY OF ENVIRONMENT' },
@@ -383,7 +412,7 @@ export default function RegisterPage() {
 
         // Step 1 cross-field validation
         if (currentStep === 1) {
-            if (!isNINVerified) {
+            if (requiresNIN && !isNINVerified) {
                 const ninElem = document.getElementById('nin') as HTMLInputElement;
                 if (ninElem) {
                     ninElem.setCustomValidity('Please verify your 11-digit NIN with OTP before continuing');
@@ -425,6 +454,7 @@ export default function RegisterPage() {
 
         // Step 4 final submission
         console.log('Registration submitted:', {
+            registrantType,
             nin,
             programme,
             name,
@@ -538,6 +568,17 @@ export default function RegisterPage() {
                     {/* ── STEP 1: Personal Information ── */}
                     {currentStep === 1 && (
                         <div className="space-y-3 animate-in fade-in duration-200">
+                            <TextField
+                                type="dropdown"
+                                label="Registrant Type"
+                                placeholder="Select your registration type"
+                                value={registrantType}
+                                onChange={handleRegistrantTypeChange}
+                                options={registrantTypeOptions}
+                                required
+                                id="registrantType"
+                            />
+
                             {/* Selected Programme */}
                             <div className="flex flex-col gap-1 mb-1">
                                 <label className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
@@ -577,75 +618,128 @@ export default function RegisterPage() {
                                 )}
                             </div>
 
-                            {/* NIN Input & Verification */}
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="nin" className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
-                                    National Identity Number (NIN) <span className="text-red-500">*</span>
-                                </label>
-                                <div className="flex gap-2">
-                                    <input
-                                        type="text"
-                                        id="nin"
-                                        value={nin}
-                                        onChange={(e) => handleNINChange(e.target.value)}
-                                        placeholder="Enter your 11-digit NIN"
-                                        className={`flex-1 px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#277B12] focus:border-[#277B12] placeholder:text-gray-400 ${isNINVerified ? 'bg-gray-50 text-gray-500 cursor-not-allowed' : 'bg-white'
-                                            }`}
-                                        required
-                                        maxLength={11}
-                                        disabled={isNINVerified}
-                                    />
-                                    {!otpSent && !isNINVerified && (
-                                        <button
-                                            type="button"
-                                            onClick={handleSendOTP}
-                                            className="bg-[#277B12] text-white font-semibold text-sm px-4 py-2.5 rounded-lg hover:bg-[#1b5c0d] transition-colors whitespace-nowrap"
-                                        >
-                                            Send OTP
-                                        </button>
-                                    )}
-                                </div>
-                                {isNINVerified && (
-                                    <p className="text-xs text-green-600 font-semibold mt-1">✓ NIN verified successfully</p>
-                                )}
-                            </div>
-
-                            {/* OTP info & field */}
-                            {otpSent && !isNINVerified && (
-                                <div className="p-3 bg-green-50 border border-green-200 rounded-lg space-y-2">
-                                    <p className="text-xs text-green-800">
-                                        An OTP was sent via SMS. (Demo code: <span className="font-bold underline tracking-wider">{generatedOTP}</span>)
-                                    </p>
-                                    <div className="flex gap-2">
-                                        <input
-                                            type="text"
-                                            id="otpInput"
-                                            value={otp}
-                                            onChange={(e) => {
-                                                setOtp(e.target.value);
-                                                e.target.setCustomValidity('');
-                                            }}
-                                            placeholder="Enter 6-digit OTP"
-                                            className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#277B12] bg-white"
-                                            maxLength={6}
-                                        />
-                                        <button
-                                            type="button"
-                                            onClick={handleVerifyOTP}
-                                            className="bg-[#277B12] text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-[#1b5c0d]"
-                                        >
-                                            Verify OTP
-                                        </button>
+                            {requiresNIN && (
+                                <>
+                                    {/* NIN Input & Verification */}
+                                    <div className="flex flex-col gap-1">
+                                        <label htmlFor="nin" className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                                            National Identity Number (NIN) <span className="text-red-500">*</span>
+                                        </label>
+                                        <div className="flex gap-2">
+                                            <input
+                                                type="text"
+                                                id="nin"
+                                                value={nin}
+                                                onChange={(e) => handleNINChange(e.target.value)}
+                                                placeholder="Enter your 11-digit NIN"
+                                                className={`flex-1 px-3 py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#277B12] focus:border-[#277B12] placeholder:text-gray-400 ${isNINVerified ? 'bg-gray-50 text-gray-500 cursor-not-allowed' : 'bg-white'
+                                                    }`}
+                                                required
+                                                maxLength={11}
+                                                disabled={isNINVerified}
+                                            />
+                                            {!otpSent && !isNINVerified && (
+                                                <button
+                                                    type="button"
+                                                    onClick={handleSendOTP}
+                                                    className="bg-[#277B12] text-white font-semibold text-sm px-4 py-2.5 rounded-lg hover:bg-[#1b5c0d] transition-colors whitespace-nowrap"
+                                                >
+                                                    Send OTP
+                                                </button>
+                                            )}
+                                        </div>
+                                        {isNINVerified && (
+                                            <p className="text-xs text-green-600 font-semibold mt-1">✓ NIN verified successfully</p>
+                                        )}
                                     </div>
-                                </div>
+
+                                    {/* OTP info & field */}
+                                    {otpSent && !isNINVerified && (
+                                        <div className="p-3 bg-green-50 border border-green-200 rounded-lg space-y-2">
+                                            <p className="text-xs text-green-800">
+                                                An OTP was sent via SMS. (Demo code: <span className="font-bold underline tracking-wider">{generatedOTP}</span>)
+                                            </p>
+                                            <div className="flex gap-2">
+                                                <input
+                                                    type="text"
+                                                    id="otpInput"
+                                                    value={otp}
+                                                    onChange={(e) => {
+                                                        setOtp(e.target.value);
+                                                        e.target.setCustomValidity('');
+                                                    }}
+                                                    placeholder="Enter 6-digit OTP"
+                                                    className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#277B12] bg-white"
+                                                    maxLength={6}
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={handleVerifyOTP}
+                                                    className="bg-[#277B12] text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-[#1b5c0d]"
+                                                >
+                                                    Verify OTP
+                                                </button>
+                                            </div>
+                                        </div>
+                                    )}
+                                </>
                             )}
 
                             {/* Auto-filled NIN details */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 pt-1">
-                                <TextField type="text" label="Full Name" placeholder="Auto-filled via NIN" value={name} onChange={setName} id="name" readOnly={true} />
-                                <TextField type="text" label="Date of Birth" placeholder="Auto-filled via NIN" value={dob} onChange={setDob} id="dob" readOnly={true} />
-                                <TextField type="text" label="Phone Number" placeholder="Auto-filled via NIN" value={phoneNumber} onChange={setPhoneNumber} id="phoneNumber" readOnly={true} />
-                                <TextField type="text" label="Gender" placeholder="Auto-filled via NIN" value={gender} onChange={setGender} id="gender" readOnly={true} />
+                                <TextField
+                                    type="text"
+                                    label="Full Name"
+                                    placeholder={requiresNIN ? "Auto-filled via NIN" : "Enter your full name"}
+                                    value={name}
+                                    onChange={setName}
+                                    id="name"
+                                    readOnly={requiresNIN}
+                                    required
+                                />
+                                <TextField
+                                    type={requiresNIN ? "text" : "date"}
+                                    label="Date of Birth"
+                                    placeholder={requiresNIN ? "Auto-filled via NIN" : undefined}
+                                    value={dob}
+                                    onChange={setDob}
+                                    id="dob"
+                                    readOnly={requiresNIN}
+                                    required
+                                />
+                                <TextField
+                                    type="text"
+                                    label="Phone Number"
+                                    placeholder={requiresNIN ? "Auto-filled via NIN" : "Enter your phone number"}
+                                    value={phoneNumber}
+                                    onChange={setPhoneNumber}
+                                    id="phoneNumber"
+                                    readOnly={requiresNIN}
+                                    required
+                                />
+                                {requiresNIN ? (
+                                    <TextField
+                                        type="text"
+                                        label="Gender"
+                                        placeholder="Auto-filled via NIN"
+                                        value={gender}
+                                        onChange={setGender}
+                                        id="gender"
+                                        readOnly
+                                        required
+                                    />
+                                ) : (
+                                    <TextField
+                                        type="dropdown"
+                                        label="Gender"
+                                        placeholder="Select gender"
+                                        value={gender}
+                                        onChange={setGender}
+                                        options={genderOptions}
+                                        id="gender"
+                                        required
+                                    />
+                                )}
                             </div>
                         </div>
                     )}
