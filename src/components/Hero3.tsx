@@ -139,9 +139,12 @@ export function Hero3() {
   return (
     <section className="flex flex-col w-full items-center justify-center px-4 sm:px-10 bg-white">
       {/* UPDATES Section */}
-      <h3 className="text-center text-xl text-black font-semibold my-8 tracking-widest uppercase">
-        UPDATES
-      </h3>
+      <div className="my-8 flex flex-col items-center">
+        <h3 className="text-center text-xl text-black font-semibold tracking-widest uppercase">
+          UPDATES
+        </h3>
+        <span className="mt-3 h-1 w-16 rounded-full bg-[#277B12]" aria-hidden="true" />
+      </div>
 
       <div className="w-full bg-white mb-14 border-b-[1px] border-green-500 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
@@ -209,9 +212,12 @@ export function Hero3() {
 
       {/* Upcoming Programs Section */}
       <div className="w-full flex flex-col items-center mb-16">
-        <h3 className="text-center text-xl text-black font-semibold mb-8">
-          Upcoming Programs
-        </h3>
+        <div className="mb-8 flex flex-col items-center">
+          <h3 className="text-center text-xl text-black font-semibold">
+            Upcoming Programs
+          </h3>
+          <span className="mt-3 h-1 w-16 rounded-full bg-[#277B12]" aria-hidden="true" />
+        </div>
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {upcomingPrograms.map((program, index) => (
             <div

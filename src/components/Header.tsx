@@ -17,7 +17,7 @@ export function Header() {
     { label: "FMYD", href: "https://fmyd.gov.ng/", external: true },
     // { label: "Program", href: "/#programs" },
     // { label: "Endorser", href: "/#endorser" },
-    { label: "Youth Databank", href: "/databank" },
+    { label: "Youth Databank", href: "https://nydb.ng/", external: true },
   ];
 
   // const policyLinks = [
