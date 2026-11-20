@@ -18,7 +18,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/dashboard', request.url));
   }
 
-  if (pathname.startsWith('/admin') && !adminToken) {
+  if ((pathname === '/admin' || pathname.startsWith('/admin/')) && !adminToken) {
     return NextResponse.redirect(new URL('/admin-login', request.url));
   }
 

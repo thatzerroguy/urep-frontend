@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { LayoutGrid, AppWindow, FileText } from 'lucide-react';
-import { ADMIN_ACCESS_TOKEN_KEY } from '@/lib/urep-api';
+import { ADMIN_ACCESS_TOKEN_KEY, clearAdminAuth } from '@/lib/urep-api';
 
 export default function AdminLayout({
   children,
@@ -17,6 +17,7 @@ export default function AdminLayout({
 
   useEffect(() => {
     if (!sessionStorage.getItem(ADMIN_ACCESS_TOKEN_KEY)) {
+      clearAdminAuth();
       router.replace('/admin-login');
       return;
     }

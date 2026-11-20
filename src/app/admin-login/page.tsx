@@ -106,12 +106,6 @@ export default function AdminLoginPage() {
             </button>
           </form>
 
-          <p className="mt-6 text-center text-sm text-gray-500">
-            Not an administrator?{' '}
-            <Link href="/login" className="font-semibold text-[#277B12] hover:underline">
-              Participant sign in
-            </Link>
-          </p>
         </div>
       </div>
     </div>

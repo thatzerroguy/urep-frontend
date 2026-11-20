@@ -48,14 +48,18 @@ export function storeAdminAuth(data: AuthData) {
   if (data.id) sessionStorage.setItem(ADMIN_ID_KEY, data.id);
 }
 
+export function clearAdminAuth() {
+  sessionStorage.removeItem(ADMIN_ACCESS_TOKEN_KEY);
+  sessionStorage.removeItem(ADMIN_ID_KEY);
+  clearAuthCookie(ADMIN_ACCESS_TOKEN_KEY);
+}
+
 export function clearAuth() {
   sessionStorage.removeItem(ACCESS_TOKEN_KEY);
-  sessionStorage.removeItem(ADMIN_ACCESS_TOKEN_KEY);
   sessionStorage.removeItem(USER_ID_KEY);
-  sessionStorage.removeItem(ADMIN_ID_KEY);
   sessionStorage.removeItem(REGISTERED_USER_ID_KEY);
   clearAuthCookie(ACCESS_TOKEN_KEY);
-  clearAuthCookie(ADMIN_ACCESS_TOKEN_KEY);
+  clearAdminAuth();
 }
 
 export interface NationalYouthDraft {
